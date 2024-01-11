@@ -1,0 +1,6 @@
+nella cancellazione il nodo x è il nodo che subito sotto di quello cancellato
+
+zROSSO
+ \
+  xNERO
+	w è il fratello di x

@@ -1,0 +1,64 @@
+una tabella hash è una sequenza di elementi composti da un informazione e una chiave
+a ogni chiave k corrisponde un informazione le operazioni sono l'inserimento la delete e la ricerca
+l'operazione fondamentale è la ricerca che vedremo avere una complessità o(1) nel caso medio ma il caso peggiore sarà wuello
+più interessante
+
+abbiamo due tipi di implementazione:
+
+indirizzamento diretto
+tabelle hash
+
+L’indirizzamento diretto `e una tecnica semplice che funziona
+bene quando l’universo U delle chiavi `e ragionevolmente piccolo
+Le operazioni di ricerca, inserimento e cancellazione sono facili
+da implementare ed hanno un costo computazionale costante
+Θ(1)
+
+fattore di carico  fattore di carico:
+ fattore di carico:
+α = n/m n=k numero di chiavi effettivamente utilizzato m=U
+
+Dimensionare la tabella in base al numero di elementi attesi ed
+utilizzare una speciale funzione (funzione hash) per indicizzare
+la tabella
+Una funzione hash `e una funzione che data una chiave k ∈ U
+restituisce la posizione della tabella in cui l’elemento con
+chiave k viene memorizzato
+
+L’idea `e quella di definire una funzione d’accesso che permetta
+di ottenere la posizione di un elemento in data la sua chiave
+Con l’hashing, un elemento con chiave k viene memorizzato
+nella cella h(k)
+Pro: riduciamo lo spazio necessario per memorizzare la tabella
+Contro:
+perdiamo la corrispondenza tra chiavi e posizioni in tabella
+le tabelle hash possono soffrire del fenomeno delle collisioni
+
+Due chiavi k1 e k2 collidono quando corrispondono alla stessa
+posizione della tabella, ossia quando h(k1) = h(k2)
+Soluzione ideale: eliminare del tutto le collisioni scegliendo
+un’opportuna (= perfetta) funzione hash. Una funzione hash
+si dice perfetta se `e iniettiva, cio`e se per ogni k1, k2 ∈ U
+k1 != k2 =⇒ h(k1) != h(k2)
+Deve essere |U| ≤ m
+Se |U| > m, evitare del tutto le collisioni `e impossibile
+
+è possibile inoltre risolvere le collisioni tramite due tipi di hash table
+chained hash
+hash indirizzamento aperto
+
+Una buona funzione hash deve:
+1 essere facile da calcolare (costo costante)
+2 soddisfare il requisito di uniformit`a semplice: ogni chiave deve
+avere la stessa probabilit`a di vedersi assegnata una qualsiasi
+posizione ammissibile, indipendentemente da altri valori hash
+gi`a assegnati
+
+abbiamo due metodi per fare una buona funzione hash
+metodo della divisione consiste nel fare h(k)=k mod m
+Semplice e veloce, ma occorre evitare certi valori di m; m non
+dovrebbe essere una potenza di 2
+Se m = 2p
+, h(k) rappresenta solo i p bit meno significativi di
+k. Questo limita la casualit`a di h, in quanto `e funzione di una
+porzione (di dimensione logaritmica) della chiave

@@ -1,0 +1,91 @@
+La rappresentazione non fa uso di puntatori
+Le collisioni vengono gestite memorizzando elementi collidenti
+in altre posizione della tabella
+Invece di seguire le liste di collisione, calcoliamo la sequenza di
+posizioni da esaminare
+Il fattore di carico non pu`o mai superare 1
+Si usa meno memoria rispetto alla rappresentazione con liste
+di collisione perch`e non ci sono puntatori
+
+Supponiamo di voler inserire un elemento con chiave k e la sua
+posizione “naturale” h(k) sia gi`a occupata
+Cerchiamo la cella vuota (se c’`e) scandendo le celle secondo
+una sequenza di indici; ad esempio:
+c(k, 0) c(k, 1) . . . c(k, m)
+c(k, 0) = h(k) c(k, 1) = h(k) + 1 . . . c(k, m) = h(k) + m
+
+Per inserire una nuova chiave si esamina una successione di
+posizioni della tabella, si esegue una scansione, finch`e non si
+trova una posizione vuota in cui inserire la chiave
+La sequenza di posizioni esaminate dipende dalla chiave che
+deve essere inserita
+Estendiamo la funzione hash in modo che possa tener conto
+anche del numero di posizioni gi`a esaminate
+
+l problema della cancellazione di un elemento in una tabella hash
+ad indirizzamento aperto `e appena un p`o pi`u complesso
+Se eliminiamo un elemento da una posizione i della tabella non si
+pu`o semplicemente marcare questa posizione con nil: spezzeremo
+la sequenza di scansione delle eventuali chiavi collidenti con la
+chiave da cancellare
+Possiamo marcare la posizione con un valore speciale, deleted, e
+modificare consistentemente la procedura Hash-Insert
+Cos`ı facendo i tempi di ricerca non dipendo pi`u solo dal fattore di
+carico α; l’uso di liste di collisione `e pi`u comune se si ammettono
+cancellazioni frequenti
+
+Analisi del costo di scansione
+Il costo viene espresso in termini del fattore di carico α = n/m
+
+Teorema (inserimento): l’inserimento in una tabella hash ad
+indirizzamento aperto con fattore di carico α, richiede un
+numero medio di accessi pari al pi`u a
+1/(1 − α)
+assumendo l’uniformit`a della funzione hash
+
+Un elemento viene inserito solo se vi `e spazio nella tabella e
+quindi se α < 1
+L’inserimento richiede una ricerca senza successo seguita dalla
+memorizzazione della chiave nell’ultima posizione vuota
+Il numero medio di accessi `e
+1/(1 − α)
+
+
+Teorema (ricerca con successo): in una tabella hash ad
+indirizzamento aperto con fattore di carico α = n/m < 1, il
+numero medio di accessi per una ricerca con successo `e al pi`u
+1/α ln 1/1 − α
+assumendo l’uniformit`a della funzione hash
+
+
+scansione lineare
+
+Il metodo di scansione lineare usa la funzione hash (estesa)
+definita come
+h(k, i) = (h'(k)+ i) mod m
+
+esempio scansione
+Hash-Insert(T,k) con h’(k) = 4
+h(k,0) = (h’(k) + 0) mod 9 = 4 mod 9 = 4
+h(k,1) = (h’(k) + 1) mod 9 = 5 mod 9 = 5
+h(k,2) = (h’(k) + 2) mod 9 = 6 mod 9 = 6
+h(k,3) = (h’(k) + 3) mod 9 = 7 mod 9 = 7
+h(k,4) = (h’(k) + 2) mod 9 = 8 mod 9 = 8
+h(k,5) = (h’(k) + 3) mod 9 = 9 mod 9 = 0
+
+La scansione lineare presenta un fenomeno
+conosciuto come agglomerazione primaria
+Le posizioni occupate della tabella si accumulano
+per lunghi tratti, aumentando cos`ı il tempo medio di
+ricerca
+
+scansione quadratica
+
+Sia h' : U → {0, 1, . . . , m − 1} una funzione hash “ordinaria”
+Il metodo di scansione quadratica usa la funzione hash
+(estesa) definita come
+h(k, i) = (h'(k)+c1i+c2i2)mod m
+c2!=0
+
+Elimina il problema dell’agglomerazione primaria ma
+crea una aglomerazione più lieve detta secondaria

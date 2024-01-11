@@ -1,0 +1,19 @@
+un grafo è una struttura dati formata da nodi nodes(vertex), archi edges
+
+i nodi sono connessi tra loro dagli archi
+
+i grafi sono divisi in grafi diretti e indiretti
+
+i grafi diretti hanno archi uscenti e entranti coppia formata da (u,v)
+
+i grafi indiretti hanno un solo arco che rappresenta entrante e uscente (u,v) and (v,u) are the same
+ci sono due metodi di rappresentazione di una grafo
+
+la matrice di adiacenza in cui abbiamo archi e colonne rappresentati da 1,0
+
+la lista di adiacenza in cui abbiamo nella lista tutti gli i nodi che hanno un arco che li collega 1-> 2,3,4
+
+elliminazione dalla matrice di adiacenza costo O(1)
+rappresentazione O(V^2) e anche aggiungere nodi
+
+aggiungere nodi è semplice salva spazioe V+E

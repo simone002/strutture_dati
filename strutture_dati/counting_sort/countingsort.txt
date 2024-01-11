@@ -1,0 +1,27 @@
+il counting sort è un algoritmo di riordinamento che si basa sul conteggio della presenza di un determinato valore
+all'interno del nostro array, se è presente più volte esso sarà contato a differenza degli ordinamento per confronto
+
+la complessità di tale algoritmo è O(n+k)
+
+il funzionamento si basa nel cercare inzialmente il massimo e il minimo di tale array cosi da poter creare un array di
+supporto con dimensione=al range di valori dell'array principale
+l'iesimo valore di tale array di supporto sarà il valore contenuto all'interno di ogni cella dell'array principale
+in cui sarà memorizato il numero di volte che quel valore sarà avvistato
+
+creiamo un terzo array con dimensione pari all'array principale
+
+successivamente si farà un for partendo dalla fine dell'array principale
+e si valuterà da destra verso sinistra il valore controllando nell'array B a quanto corrisponde 
+
+
+pseudo codice 
+counting sort(A,B,k){ O(n+k)
+	for i=1 to k
+		do C[i]=0;
+	for i=1 to length[A]
+		do C[A[j]]= C[A[j]]+1; // contatore delle frequenze C
+	for i=2 to k
+		do C[i]=C[i]+C[i-1];
+	for j=length[A] down to 1
+		do B[C[A[j]]]= A[j]
+		   C[A[j]]--

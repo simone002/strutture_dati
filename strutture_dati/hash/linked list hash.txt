@@ -1,0 +1,70 @@
+Gli elementi collidenti vengono inseriti nella stessa posizione
+della tabella in una lista concatenata
+
+Chained-Hash-Search(T, k) O(N) caso peggiore N=numelemtnilista
+ricerca un elemento con chiave k nella lista T[h(k)]
+Chained-Hash-Insert(T, x) O(1)
+inserisci x in testa alla lista T[h(key[x])]
+Chained-Hash-Delete(T, x) O(1) o uguale ricerca nel caso di liste semplici
+cancella x dalla lista T[h(key[x])]
+
+Data una tabella T con m posizioni ed n elementi, quanto
+tempo richiede la ricerca di un elemento data la sua chiave?
+Caso peggiore: tutte le chiavi vengono inserite nella stessa
+posizione della tabella creando un’unica lista di collisione di
+lunghezza n
+In questo caso il tempo di ricerca `e Θ(n) (ossia il costo della
+ricerca nella lista di collisione) + il tempo di calcolo di h
+
+Si definisce fattore di carico il rapporto tra il numero n degli
+elementi memorizzati e la dimensione m della tabella
+α = n/m
+
+Nell’ipotesi di uniformit`a semplice della funzione hash α `e il
+numero medio di elementi memorizzati in ogni lista concatenata
+
+α < 1 molte posizioni disponibili rispetto agli elementi memorizzati
+α = 1 numero di elementi memorizzati `e uguale alla dimensione della tabella
+α > 1 situazione attesa: molti elementi memorizzati rispetto alla dimensione
+della tabella
+
+caso medio ricerca
+
+Il comportamento nel caso medio dipende da come la funzione
+hash distribuisce le chiavi sulle m posizioni della tabella
+
+Teorema (ricerca senza successo): in una tabella hash in cui
+le collisioni sono risolte mediante liste di collisione, nell’ipotesi
+di uniformit`a semplice della funzione hash, una ricerca senza
+successo richiede in media un tempo Θ(1 + α)
+
+Occorre O(1) tempo per il calcolo della funzione h(k); inoltre
+si deve scorrere completamente la lista T[h(k)].
+Poich`e la lunghezza media di tale lista `e α, abbiamo un costo
+medio totale di Θ(1 + α) tempo
+
+Teorema (ricerca con successo): in una tabella hash in cui le
+collisioni sono risolte mediante liste di collisione, nell’ipotesi di
+uniformit`a semplice della funzione hash, una ricerca con
+successo richiede in media un tempo Θ(1 + α)
+
+Proof: Dato j = 1, . . . , n, sia Tj
+la tabella T contenente solo
+le prime j chiavi k1, . . . , kj
+. Sia, inoltre, αj = j/m il fattore di
+carico di Tj
+La ricerca con successo della chiave k = ki
+in T ha lo stesso
+costo della ricerca senza successo di k in Ti−1 pi`u uno
+
+infatti,
+le chiavi esaminate nella lista T[h(k)] sono esattamente le chiavi
+esaminate nella lista Ti−1[h(k)] pi`u uno (cio`e la chiave k)
+Quindi, il costo della ricerca con successo di k = ki `e dato da
+Ci = 1 + αi−1 = 1 +i − 1/m
+
+Se n `e proporzionale ad m, cio`e se n = O(m), allora
+α = n/m = O(m)/m = O(1)
+e il costo medio della ricerca risulta
+Θ(1 + α) = Θ(1 + 1) = Θ(1)
+

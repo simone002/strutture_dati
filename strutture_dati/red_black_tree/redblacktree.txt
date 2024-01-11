@@ -1,0 +1,35 @@
+Un albero rosso-nero (Red-Black Tree – RB tree for short) `e
+un albero binario di ricerca in cui ad ogni nodo associamo un
+colore, che pu`o essere rosso (Red) o nero (Black)
+Vincolando il modo in cui possiamo colorare i nodi lungo un
+qualsiasi percorso che va dalla radice ad una foglia, riusciamo
+a garantire che l’abero sia approssivatimente bilanciato
+
+Un RB tree `e un albero binario di ricerca che soddisfa le seguenti
+propriet`a:
+1 ogni nodo `e rosso o nero
+2 la radice `e nera
+3 ogni foglia `e nera
+4 se un nodo `e rosso, entrambi i suoi figli devono essere neri
+5 per ogni nodo n, tutti i percorsi che vanno da n alle foglie sue
+discendenti contengono lo stesso numero di nodi neri
+
+altezza nera numero di nodi neri che si trovano durante il percorso che va da un nodo x a una radice
+Se x `e un nodo, definiamo bh(x) = numero di nodi neri
+(x escluso) nel cammino da x ad una foglia
+bh(root) = black-height dell’albero
+
+se x `e rosso bh(x) `e uguale alla black-height del padre
+se x `e nero bh(x) `e uguale alla black-height del padre - 1
+
+L’altezza massima di un RB tree con n nodi interni `e 2 log(n + 1)
+
+Sia h l’altezza dell’albero
+Qualsiasi cammino dalla radice ad una foglia contiene almeno
+met`a nodi neri e quindi almeno h/2 nodi neri
+bh(T) = bh(root) ≥ h/2
+Per il lemma n ≥ 2
+bh(T) − 1 ≥ 2
+h/2 − 1 e n + 1 ≥ 2
+h/2
+Quindi: log(n + 1) ≥ h/2 e h ≤ 2 log(n + 1)

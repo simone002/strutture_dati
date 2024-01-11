@@ -1,0 +1,25 @@
+zl'algoritmo di ricerca di in profondità visità il grafo non in ampiezza ma in profondità
+fin quando ci sono archi in uscita si visitano quando finiscono si fa backtrack ovvero si torna indietro
+ e si visitano ulteriori archi adiacenti al predecessore il processo finisce quando non vi sono più nodi da esplorare
+in questo caso un nodo diventa nero quando non vi sono più nodi adiacenti e quindi viene marcato visitato
+
+A B C D E F
+
+si usa uno stack
+
+inizialmente vuoto
+pushamo il primo nodo in input in questo caso A stack=A e printiamo e lo marchiamo grigio
+
+pushamo B nello stack=B,A e lo visitiamo e lo printiamo
+
+pushamo D nello stack=D,B,A e lo visitiamo grigio sempre print
+
+
+pushamo E printiamo visitiamo stack=E,D,B,A
+pushamo F printiamo visitiamo stack=F,E,D,B,A adesso non ha nodi adiacenti non visitati f quindi facciamo la pop dallo stack
+e coloriamo F di nero 
+continuiamo la visita dalla top dello stack che è stack=E,D,B,A
+e ha un nodo adiacente che è c stack=C,E,D,B,A
+e cosi via...
+
+O(V+E)

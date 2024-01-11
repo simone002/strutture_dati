@@ -1,0 +1,20 @@
+traversamento di nodi a strati livello dopo livello
+
+i grafi potrebbero contenere cicli
+
+per ovviare a questo problema possiamo utilizzare una colorazione che ci fa capire se un nodo è stato visitato o meno
+ bianco non visitato grigio frontiera tra visitato e non visitato nero visita completata
+
+1 2 3 4 5 6
+mettiamo 1 nella coda e lo coloriamo di grigio lo printiamo e lo coloriamo di nero controlliamo i nodi adiacenti a 1
+ 2 e 3 li mettiamo nella coda=2 3
+printiamo il 2 e lo coloriamo di nero e visitiamo i nodi adiacenti coda= 3,4,5 la coda non è vuota quindi adesso printiamo
+il 3 e lo coloriamo di nero i nodi adiacenti a 3 sono già visitati quindi non andiamo dentro il loop la coda non è ancora vuota
+quindi visitiamo i nodi adiacenti alla nuova testa della coda =4,5
+che è il 6 quindi coloriamo 4 di nero lo printiamo coloriamo 6 di grigio e lo pushamo nella coda=5,6
+la coda non è vuota quindi printiamo 5 dato che gli adiacenti di 5 sono tutti visitati non entriamo nel loop
+ e infine stampiamo il 6
+
+quindi l'albero sarà formato da 1,2,3,4,5,6 dipende dal nodo da cui partiamo
+
+complessità O(V+E) 

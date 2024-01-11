@@ -1,0 +1,53 @@
+l'heap è una struttura dati formata da un albero completo o quasi nel senso che i nodi vengono aggiunti da sinistra
+verso destra
+la propietà fondamentale dell'heap riguarda l'ordinamento dei nodi
+ovvero se max heap il nodo padre dovrà essere più grande dei nodi figli se mini contrario
+inoltre il sottalbero sinistro e destro devono essere degli heap
+
+
+tramite l'heap è possibile implementare una coda con priorità grazie alle 2 funzioni principali di esso
+ovvero
+l'exctract max-min
+enqueue
+increse-decrese-key
+
+oltre queste funzioni l'heap si compone 
+della funzione heapify che risolve i problemi derivanti possibilmente da un inserimento o icremento decremento di
+priorità di una chiave
+il build heap costruisce l'heap partento dalla metà della dimensione
+
+heapify(A,i) O(logn) maxheap
+max=i;
+l=left(i);
+r=right(i);
+if(l<=heapsize[A] and A[l]>A[max])
+	max=l;
+if(r<=heapsize[A] and A[r]>A[max])
+	max=r;
+if(max!=i)
+	swap(A[i],A[max])
+	heapify(A,max);
+----------
+extract-max(A) O(logn)
+swap(A,i,heapsize)
+heapsize --
+heapify(A,1);
+return A[heapsize+1];
+-----
+insert(A,k) O(logn)
+heapsize++;
+A[heapsize]=k;
+i=heapsize;
+while(i>1 and A[parent(i)]<A[i]) nel caso dell'heapmax
+	swap(A,i,parent(i))
+	i=parent(i);
+
+build-maxheap(A,n) O(nlogn)
+for i=n/2 to 1
+	heapify(A,i)
+
+heap-sort(A,n) O(nlogn
+heapsize=n;
+buildmaxheap(A,n);
+for i=1 to n-1 do
+	extract-max(A);
